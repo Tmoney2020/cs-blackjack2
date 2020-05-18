@@ -73,9 +73,23 @@ namespace cs_blackjack
                     Console.WriteLine(deckOfCards[0].RankAndSuit());
                     Console.WriteLine(deckOfCards[1].RankAndSuit());
                     deckOfCards.Remove(deckOfCards[0]);
-                    deckOfCards.Remove(deckOfCards[1]);
+                    deckOfCards.Remove(deckOfCards[0]);
                     Console.WriteLine($" The Value of your two cards is {currentValueOfHand}. Would you like to take a hit (Yes or No)?");
                     var takeHit = Console.ReadLine();
+                    if (currentValueOfHand == 21)
+                    {
+                        Console.WriteLine($"You got BlackJack! You won!");
+                        var playAgain = Console.ReadLine();
+                        if (playAgain == "yes" || playAgain == "Yes")
+                        {
+                            StartBlackJack();
+                        }
+                        if (playAgain == "No" || playAgain == "no")
+                        {
+                            Console.WriteLine($"Thank you for playing. Come back soon");
+                        }
+                    }
+
                     if (takeHit == "No" || takeHit == "no")
                     {
                         Console.WriteLine($" Ok, now let's see the dealer's hand. The dealer has {dealerHand[0].RankAndSuit()} and {dealerHand[1].RankAndSuit()}. The Value of the dealer's hand is {dealerHand[0].TheValue() + dealerHand[1].TheValue()}");
@@ -175,6 +189,19 @@ namespace cs_blackjack
                         Console.WriteLine(deckOfCards[0].RankAndSuit());
                         deckOfCards.Remove(deckOfCards[0]);
                         int currentValueOfHandAfterFirstHit = currentValueOfHand + playerOneHand[2].TheValue();
+                        if (currentValueOfHandAfterFirstHit == 21)
+                        {
+                            Console.WriteLine($"You got BlackJack! You won!");
+                            var playAgain = Console.ReadLine();
+                            if (playAgain == "yes" || playAgain == "Yes")
+                            {
+                                StartBlackJack();
+                            }
+                            if (playAgain == "No" || playAgain == "no")
+                            {
+                                Console.WriteLine($"Thank you for playing. Come back soon");
+                            }
+                        }
                         if (currentValueOfHandAfterFirstHit > 21)
                         {
                             Console.WriteLine($"Im sorry the value of your hand is {currentValueOfHandAfterFirstHit}, you have busted. Would you like to play again (Yes or No)?");
@@ -254,6 +281,19 @@ namespace cs_blackjack
                                 Console.WriteLine(deckOfCards[0].RankAndSuit());
                                 deckOfCards.Remove(deckOfCards[0]);
                                 int currentValueOfHandAfterSecondHit = currentValueOfHandAfterFirstHit + playerOneHand[3].TheValue();
+                                if (currentValueOfHandAfterSecondHit == 21)
+                                {
+                                    Console.WriteLine($"You got BlackJack! You won!");
+                                    var playAgain = Console.ReadLine();
+                                    if (playAgain == "yes" || playAgain == "Yes")
+                                    {
+                                        StartBlackJack();
+                                    }
+                                    if (playAgain == "No" || playAgain == "no")
+                                    {
+                                        Console.WriteLine($"Thank you for playing. Come back soon");
+                                    }
+                                }
                                 if (currentValueOfHandAfterSecondHit > 21)
                                 {
                                     Console.WriteLine($"Im sorry the value of your hand is {currentValueOfHandAfterSecondHit}, you have busted. Would you like to play again (Yes or No)?");
@@ -332,6 +372,19 @@ namespace cs_blackjack
                                         Console.WriteLine(deckOfCards[0].RankAndSuit());
                                         deckOfCards.Remove(deckOfCards[0]);
                                         int currentValueOfHandAfterThirdHit = currentValueOfHandAfterSecondHit + playerOneHand[4].TheValue();
+                                        if (currentValueOfHandAfterThirdHit == 21)
+                                        {
+                                            Console.WriteLine($"You got BlackJack! You won!");
+                                            var playAgain = Console.ReadLine();
+                                            if (playAgain == "yes" || playAgain == "Yes")
+                                            {
+                                                StartBlackJack();
+                                            }
+                                            if (playAgain == "No" || playAgain == "no")
+                                            {
+                                                Console.WriteLine($"Thank you for playing. Come back soon");
+                                            }
+                                        }
                                         if (currentValueOfHandAfterThirdHit > 21)
                                         {
                                             Console.WriteLine($"Im sorry the value of your hand is {currentValueOfHandAfterThirdHit}, you have busted. Would you like to play again (Yes or No)?");
@@ -410,6 +463,19 @@ namespace cs_blackjack
                                                 Console.WriteLine(deckOfCards[0].RankAndSuit());
                                                 deckOfCards.Remove(deckOfCards[0]);
                                                 int currentValueOfHandAfterFourthHit = currentValueOfHandAfterThirdHit + playerOneHand[5].TheValue();
+                                                if (currentValueOfHandAfterFourthHit == 21)
+                                                {
+                                                    Console.WriteLine($"You got BlackJack! You won!");
+                                                    var playAgain = Console.ReadLine();
+                                                    if (playAgain == "yes" || playAgain == "Yes")
+                                                    {
+                                                        StartBlackJack();
+                                                    }
+                                                    if (playAgain == "No" || playAgain == "no")
+                                                    {
+                                                        Console.WriteLine($"Thank you for playing. Come back soon");
+                                                    }
+                                                }
                                                 if (currentValueOfHandAfterFourthHit > 21)
                                                 {
                                                     Console.WriteLine($"Im sorry the value of your hand is {currentValueOfHandAfterFourthHit}, you have busted. Would you like to play again (Yes or No)?");
@@ -488,6 +554,19 @@ namespace cs_blackjack
                                                         Console.WriteLine(deckOfCards[0].RankAndSuit());
                                                         deckOfCards.Remove(deckOfCards[0]);
                                                         int currentValueOfHandAfterFifthHit = currentValueOfHandAfterFourthHit + playerOneHand[6].TheValue();
+                                                        if (currentValueOfHandAfterFifthHit == 21)
+                                                        {
+                                                            Console.WriteLine($"You got BlackJack! You won!");
+                                                            var playAgain = Console.ReadLine();
+                                                            if (playAgain == "yes" || playAgain == "Yes")
+                                                            {
+                                                                StartBlackJack();
+                                                            }
+                                                            if (playAgain == "No" || playAgain == "no")
+                                                            {
+                                                                Console.WriteLine($"Thank you for playing. Come back soon");
+                                                            }
+                                                        }
                                                         if (currentValueOfHandAfterFifthHit > 21)
                                                         {
                                                             Console.WriteLine($"Im sorry the value of your hand is {currentValueOfHandAfterFifthHit}, you have busted. Would you like to play again (Yes or No)?");
@@ -566,6 +645,19 @@ namespace cs_blackjack
                                                                 Console.WriteLine(deckOfCards[0].RankAndSuit());
                                                                 deckOfCards.Remove(deckOfCards[0]);
                                                                 int currentValueOfHandAfterSixthHit = currentValueOfHandAfterFifthHit + playerOneHand[7].TheValue();
+                                                                if (currentValueOfHandAfterSixthHit == 21)
+                                                                {
+                                                                    Console.WriteLine($"You got BlackJack! You won!");
+                                                                    var playAgain = Console.ReadLine();
+                                                                    if (playAgain == "yes" || playAgain == "Yes")
+                                                                    {
+                                                                        StartBlackJack();
+                                                                    }
+                                                                    if (playAgain == "No" || playAgain == "no")
+                                                                    {
+                                                                        Console.WriteLine($"Thank you for playing. Come back soon");
+                                                                    }
+                                                                }
                                                                 if (currentValueOfHandAfterSixthHit > 21)
                                                                 {
                                                                     Console.WriteLine($"Im sorry the value of your hand is {currentValueOfHandAfterSixthHit}, you have busted. Would you like to play again (Yes or No)?");
@@ -701,6 +793,19 @@ namespace cs_blackjack
                                                                             Console.WriteLine(deckOfCards[0].RankAndSuit());
                                                                             deckOfCards.Remove(deckOfCards[0]);
                                                                             int currentValueOfHandAfterSeventhHit = currentValueOfHandAfterSixthHit + playerOneHand[8].TheValue();
+                                                                            if (currentValueOfHandAfterSeventhHit == 21)
+                                                                            {
+                                                                                Console.WriteLine($"You got BlackJack! You won!");
+                                                                                var playAgain = Console.ReadLine();
+                                                                                if (playAgain == "yes" || playAgain == "Yes")
+                                                                                {
+                                                                                    StartBlackJack();
+                                                                                }
+                                                                                if (playAgain == "No" || playAgain == "no")
+                                                                                {
+                                                                                    Console.WriteLine($"Thank you for playing. Come back soon");
+                                                                                }
+                                                                            }
                                                                             if (currentValueOfHandAfterSeventhHit <= 21)
                                                                             {
                                                                                 Console.WriteLine($" Ok, now let's see the dealer's hand. The dealer has {dealerHand[0].RankAndSuit()} and {dealerHand[1].RankAndSuit()} The Value of the dealer's hand is {dealerHand[0].TheValue() + dealerHand[1].TheValue()}");
