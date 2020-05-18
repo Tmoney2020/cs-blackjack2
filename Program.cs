@@ -78,7 +78,7 @@ namespace cs_blackjack
                     var takeHit = Console.ReadLine();
                     if (takeHit == "No" || takeHit == "no")
                     {
-                        Console.WriteLine($" Ok, now let's see the dealer's hand. The dealer has {dealerHand[0].RankAndSuit()} and {dealerHand[1].RankAndSuit()}");
+                        Console.WriteLine($" Ok, now let's see the dealer's hand. The dealer has {dealerHand[0].RankAndSuit()} and {dealerHand[1].RankAndSuit()}. The Value of the dealer's hand is {dealerHand[0].TheValue() + dealerHand[1].TheValue()}");
                         int dealerHandAfterShowing = dealerHand[0].TheValue() + dealerHand[1].TheValue();
                         if (dealerHandAfterShowing >= 17)
                         {
@@ -95,9 +95,9 @@ namespace cs_blackjack
                                     Console.WriteLine($"Thank you for playing. Come back soon");
                                 }
                             }
-                            if (currentValueOfHand > dealerHandAfterShowing)
+                            if (currentValueOfHand >= dealerHandAfterShowing)
                             {
-                                Console.WriteLine("you won! Would you like to play again (Yes or no)?");
+                                Console.WriteLine("You won! Would you like to play again (Yes or no)?");
                                 var playAgain = Console.ReadLine();
                                 if (playAgain == "yes" || playAgain == "Yes")
                                 {
@@ -112,10 +112,10 @@ namespace cs_blackjack
                         if (dealerHandAfterShowing < 17)
                         {
 
-                            for (int currentValueOfDealerHand = dealerHand[0].TheValue() + dealerHand[1].TheValue(); currentValueOfDealerHand < 17 && currentValueOfDealerHand <= 21; currentValueOfDealerHand = dealerHand[0].TheValue() + currentValueOfDealerHand)
+                            for (int currentValueOfDealerHand = dealerHand[0].TheValue() + dealerHand[1].TheValue(); currentValueOfDealerHand < 17 && currentValueOfDealerHand <= 21; currentValueOfDealerHand = deckOfCards[0].TheValue() + currentValueOfDealerHand)
                             {
                                 dealerHand.Add(deckOfCards[0]);
-                                int currentValueOfDealerHandAfterHit = currentValueOfDealerHand + dealerHand[0].TheValue();
+                                int currentValueOfDealerHandAfterHit = dealerHand[0].TheValue() + dealerHand[1].TheValue() + deckOfCards[0].TheValue();
                                 Console.WriteLine($"The dealer got a {deckOfCards[0].RankAndSuit()} The current value of the dealer's hand is {currentValueOfDealerHandAfterHit}");
                                 deckOfCards.Remove(deckOfCards[0]);
                                 if (currentValueOfDealerHandAfterHit >= 17 && currentValueOfDealerHandAfterHit <= 21)
@@ -133,7 +133,7 @@ namespace cs_blackjack
                                             Console.WriteLine($"Thank you for playing. Come back soon");
                                         }
                                     }
-                                    if (currentValueOfHand > currentValueOfDealerHandAfterHit)
+                                    if (currentValueOfHand >= currentValueOfDealerHandAfterHit)
                                     {
                                         Console.WriteLine("you won! Would you like to play again (Yes or no)?");
                                         var playAgain = Console.ReadLine();
@@ -191,11 +191,11 @@ namespace cs_blackjack
                             var getSecondHit = Console.ReadLine();
                             if (getSecondHit == "No" || getSecondHit == "no")
                             {
-                                Console.WriteLine($" Ok, now let's see the dealer's hand. The dealer has {dealerHand[0].RankAndSuit()} and {dealerHand[1].RankAndSuit()}");
-                                for (int currentValueOfDealerHand = dealerHand[0].TheValue() + dealerHand[1].TheValue(); currentValueOfDealerHand < 17 && currentValueOfDealerHand <= 21; currentValueOfDealerHand = dealerHand[0].TheValue() + currentValueOfDealerHand)
+                                Console.WriteLine($" Ok, now let's see the dealer's hand. The dealer has {dealerHand[0].RankAndSuit()} and {dealerHand[1].RankAndSuit()}. The Value of the dealer's hand is {dealerHand[0].TheValue() + dealerHand[1].TheValue()}");
+                                for (int currentValueOfDealerHand = dealerHand[0].TheValue() + dealerHand[1].TheValue(); currentValueOfDealerHand < 17 && currentValueOfDealerHand <= 21; currentValueOfDealerHand = deckOfCards[0].TheValue() + currentValueOfDealerHand)
                                 {
                                     dealerHand.Add(deckOfCards[0]);
-                                    int currentValueOfDealerHandAfterHit = currentValueOfDealerHand + dealerHand[0].TheValue();
+                                    int currentValueOfDealerHandAfterHit = currentValueOfDealerHand + deckOfCards[0].TheValue();
                                     Console.WriteLine($"The dealer got a {deckOfCards[0].RankAndSuit()} The current value of the dealer's hand is {currentValueOfDealerHandAfterHit}");
                                     deckOfCards.Remove(deckOfCards[0]);
                                     if (currentValueOfDealerHandAfterHit >= 17 && currentValueOfDealerHandAfterHit <= 21)
@@ -213,7 +213,7 @@ namespace cs_blackjack
                                                 Console.WriteLine($"Thank you for playing. Come back soon");
                                             }
                                         }
-                                        if (currentValueOfHandAfterFirstHit > currentValueOfDealerHandAfterHit)
+                                        if (currentValueOfHandAfterFirstHit >= currentValueOfDealerHandAfterHit)
                                         {
                                             Console.WriteLine("you won! Would you like to play again (Yes or no)?");
                                             var playAgain = Console.ReadLine();
@@ -269,11 +269,11 @@ namespace cs_blackjack
                                     var getThirdHit = Console.ReadLine();
                                     if (getThirdHit == "No" || getThirdHit == "no")
                                     {
-                                        Console.WriteLine($" Ok, now let's see the dealer's hand. The dealer has {dealerHand[0].RankAndSuit()} and {dealerHand[1].RankAndSuit()}");
-                                        for (int currentValueOfDealerHand = dealerHand[0].TheValue() + dealerHand[1].TheValue(); currentValueOfDealerHand < 17 && currentValueOfDealerHand <= 21; currentValueOfDealerHand = dealerHand[0].TheValue() + currentValueOfDealerHand)
+                                        Console.WriteLine($" Ok, now let's see the dealer's hand. The dealer has {dealerHand[0].RankAndSuit()} and {dealerHand[1].RankAndSuit()} The Value of the dealer's hand is {dealerHand[0].TheValue() + dealerHand[1].TheValue()}");
+                                        for (int currentValueOfDealerHand = dealerHand[0].TheValue() + dealerHand[1].TheValue(); currentValueOfDealerHand < 17 && currentValueOfDealerHand <= 21; currentValueOfDealerHand = deckOfCards[0].TheValue() + currentValueOfDealerHand)
                                         {
                                             dealerHand.Add(deckOfCards[0]);
-                                            int currentValueOfDealerHandAfterHit = currentValueOfDealerHand + dealerHand[0].TheValue();
+                                            int currentValueOfDealerHandAfterHit = currentValueOfDealerHand + deckOfCards[0].TheValue();
                                             Console.WriteLine($"The dealer got a {deckOfCards[0].RankAndSuit()} The current value of the dealer's hand is {currentValueOfDealerHandAfterHit}");
                                             deckOfCards.Remove(deckOfCards[0]);
                                             if (currentValueOfDealerHandAfterHit >= 17 && currentValueOfDealerHandAfterHit <= 21)
@@ -291,7 +291,7 @@ namespace cs_blackjack
                                                         Console.WriteLine($"Thank you for playing. Come back soon");
                                                     }
                                                 }
-                                                if (currentValueOfHandAfterSecondHit > currentValueOfDealerHandAfterHit)
+                                                if (currentValueOfHandAfterSecondHit >= currentValueOfDealerHandAfterHit)
                                                 {
                                                     Console.WriteLine("you won! Would you like to play again (Yes or no)?");
                                                     var playAgain = Console.ReadLine();
@@ -347,11 +347,11 @@ namespace cs_blackjack
                                             var getFourthHit = Console.ReadLine();
                                             if (getFourthHit == "No" || getFourthHit == "no")
                                             {
-                                                Console.WriteLine($" Ok, now let's see the dealer's hand. The dealer has {dealerHand[0].RankAndSuit()} and {dealerHand[1].RankAndSuit()}");
-                                                for (int currentValueOfDealerHand = dealerHand[0].TheValue() + dealerHand[1].TheValue(); currentValueOfDealerHand < 17 && currentValueOfDealerHand <= 21; currentValueOfDealerHand = dealerHand[0].TheValue() + currentValueOfDealerHand)
+                                                Console.WriteLine($" Ok, now let's see the dealer's hand. The dealer has {dealerHand[0].RankAndSuit()} and {dealerHand[1].RankAndSuit()} The Value of the dealer's hand is {dealerHand[0].TheValue() + dealerHand[1].TheValue()}");
+                                                for (int currentValueOfDealerHand = dealerHand[0].TheValue() + dealerHand[1].TheValue(); currentValueOfDealerHand < 17 && currentValueOfDealerHand <= 21; currentValueOfDealerHand = deckOfCards[0].TheValue() + currentValueOfDealerHand)
                                                 {
                                                     dealerHand.Add(deckOfCards[0]);
-                                                    int currentValueOfDealerHandAfterHit = currentValueOfDealerHand + dealerHand[0].TheValue();
+                                                    int currentValueOfDealerHandAfterHit = currentValueOfDealerHand + deckOfCards[0].TheValue();
                                                     Console.WriteLine($"The dealer got a {deckOfCards[0].RankAndSuit()} The current value of the dealer's hand is {currentValueOfDealerHandAfterHit}");
                                                     deckOfCards.Remove(deckOfCards[0]);
                                                     if (currentValueOfDealerHandAfterHit >= 17 && currentValueOfDealerHandAfterHit <= 21)
@@ -369,7 +369,7 @@ namespace cs_blackjack
                                                                 Console.WriteLine($"Thank you for playing. Come back soon");
                                                             }
                                                         }
-                                                        if (currentValueOfHandAfterThirdHit > currentValueOfDealerHandAfterHit)
+                                                        if (currentValueOfHandAfterThirdHit >= currentValueOfDealerHandAfterHit)
                                                         {
                                                             Console.WriteLine("you won! Would you like to play again (Yes or no)?");
                                                             var playAgain = Console.ReadLine();
@@ -425,11 +425,11 @@ namespace cs_blackjack
                                                     var getFifthHit = Console.ReadLine();
                                                     if (getFifthHit == "No" || getFifthHit == "no")
                                                     {
-                                                        Console.WriteLine($" Ok, now let's see the dealer's hand. The dealer has {dealerHand[0].RankAndSuit()} and {dealerHand[1].RankAndSuit()}");
-                                                        for (int currentValueOfDealerHand = dealerHand[0].TheValue() + dealerHand[1].TheValue(); currentValueOfDealerHand < 17 && currentValueOfDealerHand <= 21; currentValueOfDealerHand = dealerHand[0].TheValue() + currentValueOfDealerHand)
+                                                        Console.WriteLine($" Ok, now let's see the dealer's hand. The dealer has {dealerHand[0].RankAndSuit()} and {dealerHand[1].RankAndSuit()} The Value of the dealer's hand is {dealerHand[0].TheValue() + dealerHand[1].TheValue()}");
+                                                        for (int currentValueOfDealerHand = dealerHand[0].TheValue() + dealerHand[1].TheValue(); currentValueOfDealerHand < 17 && currentValueOfDealerHand <= 21; currentValueOfDealerHand = deckOfCards[0].TheValue() + currentValueOfDealerHand)
                                                         {
                                                             dealerHand.Add(deckOfCards[0]);
-                                                            int currentValueOfDealerHandAfterHit = currentValueOfDealerHand + dealerHand[0].TheValue();
+                                                            int currentValueOfDealerHandAfterHit = currentValueOfDealerHand + deckOfCards[0].TheValue();
                                                             Console.WriteLine($"The dealer got a {deckOfCards[0].RankAndSuit()} The current value of the dealer's hand is {currentValueOfDealerHandAfterHit}");
                                                             deckOfCards.Remove(deckOfCards[0]);
                                                             if (currentValueOfDealerHandAfterHit >= 17 && currentValueOfDealerHandAfterHit <= 21)
@@ -447,7 +447,7 @@ namespace cs_blackjack
                                                                         Console.WriteLine($"Thank you for playing. Come back soon");
                                                                     }
                                                                 }
-                                                                if (currentValueOfHandAfterFourthHit > currentValueOfDealerHandAfterHit)
+                                                                if (currentValueOfHandAfterFourthHit >= currentValueOfDealerHandAfterHit)
                                                                 {
                                                                     Console.WriteLine("you won! Would you like to play again (Yes or no)?");
                                                                     var playAgain = Console.ReadLine();
@@ -503,11 +503,11 @@ namespace cs_blackjack
                                                             var getSixthHit = Console.ReadLine();
                                                             if (getSixthHit == "No" || getSixthHit == "no")
                                                             {
-                                                                Console.WriteLine($" Ok, now let's see the dealer's hand. The dealer has {dealerHand[0].RankAndSuit()} and {dealerHand[1].RankAndSuit()}");
-                                                                for (int currentValueOfDealerHand = dealerHand[0].TheValue() + dealerHand[1].TheValue(); currentValueOfDealerHand < 17 && currentValueOfDealerHand <= 21; currentValueOfDealerHand = dealerHand[0].TheValue() + currentValueOfDealerHand)
+                                                                Console.WriteLine($" Ok, now let's see the dealer's hand. The dealer has {dealerHand[0].RankAndSuit()} and {dealerHand[1].RankAndSuit()} The Value of the dealer's hand is {dealerHand[0].TheValue() + dealerHand[1].TheValue()}");
+                                                                for (int currentValueOfDealerHand = dealerHand[0].TheValue() + dealerHand[1].TheValue(); currentValueOfDealerHand < 17 && currentValueOfDealerHand <= 21; currentValueOfDealerHand = deckOfCards[0].TheValue() + currentValueOfDealerHand)
                                                                 {
                                                                     dealerHand.Add(deckOfCards[0]);
-                                                                    int currentValueOfDealerHandAfterHit = currentValueOfDealerHand + dealerHand[0].TheValue();
+                                                                    int currentValueOfDealerHandAfterHit = currentValueOfDealerHand + deckOfCards[0].TheValue();
                                                                     Console.WriteLine($"The dealer got a {deckOfCards[0].RankAndSuit()} The current value of the dealer's hand is {currentValueOfDealerHandAfterHit}");
                                                                     deckOfCards.Remove(deckOfCards[0]);
                                                                     if (currentValueOfDealerHandAfterHit >= 17 && currentValueOfDealerHandAfterHit <= 21)
@@ -525,7 +525,7 @@ namespace cs_blackjack
                                                                                 Console.WriteLine($"Thank you for playing. Come back soon");
                                                                             }
                                                                         }
-                                                                        if (currentValueOfHandAfterFifthHit > currentValueOfDealerHandAfterHit)
+                                                                        if (currentValueOfHandAfterFifthHit >= currentValueOfDealerHandAfterHit)
                                                                         {
                                                                             Console.WriteLine("you won! Would you like to play again (Yes or no)?");
                                                                             var playAgain = Console.ReadLine();
@@ -581,11 +581,11 @@ namespace cs_blackjack
                                                                     var getSeventhHit = Console.ReadLine();
                                                                     if (getSeventhHit == "No" || getSeventhHit == "no")
                                                                     {
-                                                                        Console.WriteLine($" Ok, now let's see the dealer's hand. The dealer has {dealerHand[0].RankAndSuit()} and {dealerHand[1].RankAndSuit()}");
-                                                                        for (int currentValueOfDealerHand = dealerHand[0].TheValue() + dealerHand[1].TheValue(); currentValueOfDealerHand < 17 && currentValueOfDealerHand <= 21; currentValueOfDealerHand = dealerHand[0].TheValue() + currentValueOfDealerHand)
+                                                                        Console.WriteLine($" Ok, now let's see the dealer's hand. The dealer has {dealerHand[0].RankAndSuit()} and {dealerHand[1].RankAndSuit()} The Value of the dealer's hand is {dealerHand[0].TheValue() + dealerHand[1].TheValue()}");
+                                                                        for (int currentValueOfDealerHand = dealerHand[0].TheValue() + dealerHand[1].TheValue(); currentValueOfDealerHand < 17 && currentValueOfDealerHand <= 21; currentValueOfDealerHand = deckOfCards[0].TheValue() + currentValueOfDealerHand)
                                                                         {
                                                                             dealerHand.Add(deckOfCards[0]);
-                                                                            int currentValueOfDealerHandAfterHit = currentValueOfDealerHand + dealerHand[0].TheValue();
+                                                                            int currentValueOfDealerHandAfterHit = currentValueOfDealerHand + deckOfCards[0].TheValue();
                                                                             Console.WriteLine($"The dealer got a {deckOfCards[0].RankAndSuit()} The current value of the dealer's hand is {currentValueOfDealerHandAfterHit}");
                                                                             deckOfCards.Remove(deckOfCards[0]);
                                                                             if (currentValueOfDealerHandAfterHit >= 17 && currentValueOfDealerHandAfterHit <= 21)
@@ -603,7 +603,7 @@ namespace cs_blackjack
                                                                                         Console.WriteLine($"Thank you for playing. Come back soon");
                                                                                     }
                                                                                 }
-                                                                                if (currentValueOfHandAfterSixthHit > currentValueOfDealerHandAfterHit)
+                                                                                if (currentValueOfHandAfterSixthHit >= currentValueOfDealerHandAfterHit)
                                                                                 {
                                                                                     Console.WriteLine("you won! Would you like to play again (Yes or no)?");
                                                                                     var playAgain = Console.ReadLine();
@@ -640,11 +640,11 @@ namespace cs_blackjack
                                                                     }
                                                                     if (getSeventhHit == "no" || getSeventhHit == "No")
                                                                     {
-                                                                        Console.WriteLine($" Ok, now let's see the dealer's hand. The dealer has {dealerHand[0].RankAndSuit()} and {dealerHand[1].RankAndSuit()}");
-                                                                        for (int currentValueOfDealerHand = dealerHand[0].TheValue() + dealerHand[1].TheValue(); currentValueOfDealerHand < 17 && currentValueOfDealerHand <= 21; currentValueOfDealerHand = dealerHand[0].TheValue() + currentValueOfDealerHand)
+                                                                        Console.WriteLine($" Ok, now let's see the dealer's hand. The dealer has {dealerHand[0].RankAndSuit()} and {dealerHand[1].RankAndSuit()} The Value of the dealer's hand is {dealerHand[0].TheValue() + dealerHand[1].TheValue()}");
+                                                                        for (int currentValueOfDealerHand = dealerHand[0].TheValue() + dealerHand[1].TheValue(); currentValueOfDealerHand < 17 && currentValueOfDealerHand <= 21; currentValueOfDealerHand = deckOfCards[0].TheValue() + currentValueOfDealerHand)
                                                                         {
                                                                             dealerHand.Add(deckOfCards[0]);
-                                                                            int currentValueOfDealerHandAfterHit = currentValueOfDealerHand + dealerHand[0].TheValue();
+                                                                            int currentValueOfDealerHandAfterHit = currentValueOfDealerHand + deckOfCards[0].TheValue();
                                                                             Console.WriteLine($"The dealer got a {deckOfCards[0].RankAndSuit()} The current value of the dealer's hand is {currentValueOfDealerHandAfterHit}");
                                                                             deckOfCards.Remove(deckOfCards[0]);
                                                                             if (currentValueOfDealerHandAfterHit >= 17 && currentValueOfDealerHandAfterHit <= 21)
@@ -662,7 +662,7 @@ namespace cs_blackjack
                                                                                         Console.WriteLine($"Thank you for playing. Come back soon");
                                                                                     }
                                                                                 }
-                                                                                if (currentValueOfHandAfterSixthHit > currentValueOfDealerHandAfterHit)
+                                                                                if (currentValueOfHandAfterSixthHit >= currentValueOfDealerHandAfterHit)
                                                                                 {
                                                                                     Console.WriteLine("you won! Would you like to play again (Yes or no)?");
                                                                                     var playAgain = Console.ReadLine();
@@ -703,11 +703,11 @@ namespace cs_blackjack
                                                                             int currentValueOfHandAfterSeventhHit = currentValueOfHandAfterSixthHit + playerOneHand[8].TheValue();
                                                                             if (currentValueOfHandAfterSeventhHit <= 21)
                                                                             {
-                                                                                Console.WriteLine($" Ok, now let's see the dealer's hand. The dealer has {dealerHand[0].RankAndSuit()} and {dealerHand[1].RankAndSuit()}");
-                                                                                for (int currentValueOfDealerHand = dealerHand[0].TheValue() + dealerHand[1].TheValue(); currentValueOfDealerHand < 17 && currentValueOfDealerHand <= 21; currentValueOfDealerHand = dealerHand[0].TheValue() + currentValueOfDealerHand)
+                                                                                Console.WriteLine($" Ok, now let's see the dealer's hand. The dealer has {dealerHand[0].RankAndSuit()} and {dealerHand[1].RankAndSuit()} The Value of the dealer's hand is {dealerHand[0].TheValue() + dealerHand[1].TheValue()}");
+                                                                                for (int currentValueOfDealerHand = dealerHand[0].TheValue() + dealerHand[1].TheValue(); currentValueOfDealerHand < 17 && currentValueOfDealerHand <= 21; currentValueOfDealerHand = deckOfCards[0].TheValue() + currentValueOfDealerHand)
                                                                                 {
                                                                                     dealerHand.Add(deckOfCards[0]);
-                                                                                    int currentValueOfDealerHandAfterHit = currentValueOfDealerHand + dealerHand[0].TheValue();
+                                                                                    int currentValueOfDealerHandAfterHit = currentValueOfDealerHand + deckOfCards[0].TheValue();
                                                                                     Console.WriteLine($"The dealer got a {deckOfCards[0].RankAndSuit()} The current value of the dealer's hand is {currentValueOfDealerHandAfterHit}");
                                                                                     deckOfCards.Remove(deckOfCards[0]);
                                                                                     if (currentValueOfDealerHandAfterHit >= 17 && currentValueOfDealerHandAfterHit <= 21)
@@ -725,7 +725,7 @@ namespace cs_blackjack
                                                                                                 Console.WriteLine($"Thank you for playing. Come back soon");
                                                                                             }
                                                                                         }
-                                                                                        if (currentValueOfHandAfterSeventhHit > currentValueOfDealerHandAfterHit)
+                                                                                        if (currentValueOfHandAfterSeventhHit >= currentValueOfDealerHandAfterHit)
                                                                                         {
                                                                                             Console.WriteLine("you won! Would you like to play again (Yes or no)?");
                                                                                             var playAgain = Console.ReadLine();
